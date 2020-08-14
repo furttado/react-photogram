@@ -41,7 +41,57 @@ export default createMuiTheme({
     },
     subtitle1: {},
   },
-  presets: {},
+
+  presets: {
+    centeredWrapper: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      height: "100vh",
+      width: "100vw",
+    },
+    blueButton: {
+      marginTop: "1%",
+      background: blueButton,
+      borderRadius: 3,
+      border: 0,
+      color: background,
+      height: 48,
+      padding: "0 30px",
+      boxShadow: blueButton,
+      "&:hover": {
+        background: redButton,
+      },
+    },
+    redButton: {
+      marginTop: "1%",
+      background: redButton,
+      borderRadius: 3,
+      border: 0,
+      color: background,
+      height: 48,
+      padding: "0 30px",
+      boxShadow: redButton,
+      "&:hover": {
+        background: blueButton,
+      },
+    },
+    grayButton: {
+      marginTop: "1%",
+      background: background,
+      borderRadius: 3,
+      border: 0,
+      color: primaryFont,
+      height: 48,
+      padding: "0 30px",
+      boxShadow: "none",
+      "&:hover": {
+        background: border,
+        boxShadow: "none",
+      },
+    },
+  },
+
   overrides: {
     MuiCssBaseline: {
       "@global": {

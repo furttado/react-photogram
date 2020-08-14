@@ -3,6 +3,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { RouteProvider } from "../context/routeContext";
 
+import Profile from "../pages/Profile/Profile";
+import Register from "../pages/Register/Register";
+import Landing from "../pages/Landing";
+import NewPost from "../pages/NewPost";
+import Header from "../components/Header";
+
 function Router(props) {
   return (
     <BrowserRouter>
@@ -10,11 +16,11 @@ function Router(props) {
         <Header />
         <main className={props.className}>
           <Switch>
-            <Route exact path="/" component={<div>Component</div>} />
-            <Route path="/page1" component={<div>Component</div>} />
-            <Route path="/page2" component={<div>Component</div>} />
-            <Route path="/page3" component={<div>Component</div>} />
-            <Route path="/page4" component={<div>Component</div>} />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Register} />
+            <Route exact path="/" component={Landing} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/new-post" component={NewPost} />
           </Switch>
         </main>
       </RouteProvider>

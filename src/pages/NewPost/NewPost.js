@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { useStyles } from "./styles";
 import history from "../../routes/history";
-import { RouteContext } from "../../context/routeContext";
+import { RouteContext } from "../../hooks/routeContext";
 
 import { Button, TextField, Select } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
@@ -26,12 +26,8 @@ const NewPost = () => {
     console.log("Post done!");
   }
 
-  return (
-    <div className={classes.container}>
-      <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>
-        <ArrowBackIos /> Back
-      </Button>
-      {/* <main className={classes.mainContainer}> */}
+  const form = (
+    <React.Fragment>
       <form className={classes.form}>
         <TextField
           required
@@ -41,6 +37,7 @@ const NewPost = () => {
           label="Location"
           type="text"
           className={classes.textField}
+          onChange={() => {}}
         />
         <TextField
           required
@@ -83,7 +80,15 @@ const NewPost = () => {
           Post
         </Button>
       </form>
-      {/* </main> */}
+    </React.Fragment>
+  );
+
+  return (
+    <div className={classes.container}>
+      <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>
+        <ArrowBackIos /> Back
+      </Button>
+      <React.Fragment>{form}</React.Fragment>
     </div>
   );
 };

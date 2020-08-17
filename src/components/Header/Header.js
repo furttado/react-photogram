@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { useStyles } from "./styles";
-import { RouteContext } from "../../context/routeContext";
+import { RouteContext } from "../../hooks/routeContext";
 import { updateRoute } from "../../services/updateRoute";
 
 import { AppBar, Toolbar, Button, InputBase, Hidden, Avatar } from "@material-ui/core";

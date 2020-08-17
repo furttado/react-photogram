@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { RouteContext } from "../../context/routeContext";
+import { RouteContext } from "../../hooks/routeContext";
 import { useStyles } from "./styles";
 import { updateRoute } from "../../services/updateRoute";
 

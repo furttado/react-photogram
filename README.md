@@ -46,9 +46,7 @@ The project is under development and aims to help me practice and consolidate th
     * list followers ⚠️
     * list following ⚠️
   * New Post  ✅
-    * preview ⚠️
-
-  
+    * preview functionality ✔
 
 * **Components**
 

@@ -1,72 +1,86 @@
 import React, { useState, useContext } from "react";
+//import PropTypes from "prop-types";
+//import { withStyles } from "@material-ui/core/styles";
 
 import { useStyles } from "./styles";
 import history from "../../routes/history";
-import { RouteContext } from "../../context/routeContext";
+import { RouteContext } from "../../hooks/routeContext";
 
 import { Button, TextField, Select } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
+import PostItem from "../../components/PostItem";
 
 const NewPost = () => {
   const classes = useStyles();
   const [routeValue, setRouteValue] = useContext(RouteContext);
-  const [inputValue, setInputValue] = useState("");
-
-  function handleChange(event) {
-    setInputValue(event.target.value);
-  }
+  const initialFormData = { location: "", picture: "", description: "", role: "" };
+  const [formData, setFormData] = useState(initialFormData);
+  const [preview, setPreview] = useState(false);
 
   function handleGoBack() {
+    if (preview) {
+      return handlePreview();
+    }
     setRouteValue(history.goBack);
+  }
+
+  function handleChange(event) {
+    const { id, value } = event.target;
+    setFormData({ ...formData, [id]: value });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    handleGoBack();
+    console.log("formData", formData);
     console.log("Post done!");
+    handleGoBack();
   }
 
-  return (
-    <div className={classes.container}>
-      <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>
-        <ArrowBackIos /> Back
-      </Button>
-      {/* <main className={classes.mainContainer}> */}
+  function handlePreview() {
+    setPreview(!preview);
+  }
+
+  const form = (
+    <React.Fragment>
       <form className={classes.form}>
         <TextField
           required
-          value={""}
           variant="outlined"
-          id=""
           label="Location"
           type="text"
           className={classes.textField}
+          id="location"
+          value={formData.location}
+          onChange={handleChange}
         />
         <TextField
           required
-          value={""}
           variant="outlined"
-          id=""
           label="Picture url"
           type="text"
           className={classes.textField}
+          id="picture"
+          value={formData.picture}
+          onChange={handleChange}
         />
         <TextField
           required
-          value={""}
           variant="outlined"
-          id=""
           label="Description"
           type="text"
           multiline
           className={classes.textField}
+          id="description"
+          value={formData.description}
+          onChange={handleChange}
         />
         <Select
           native
-          value={inputValue}
-          onChange={handleChange}
           variant="outlined"
           className={classes.textField}
+          id="role"
+          value={formData.role}
+          onChange={handleChange}
         >
           <option value="" disabled>
             privacy setting
@@ -77,15 +91,44 @@ const NewPost = () => {
         </Select>
         <Button
           variant={"contained"}
-          className={[classes.postButton, classes.TextField]}
+          className={(classes.postButton, classes.TextField)}
           onClick={handleSubmit}
         >
           Post
         </Button>
       </form>
-      {/* </main> */}
+    </React.Fragment>
+  );
+
+  const postPreview = (
+    <PostItem
+      id={"post.postId"}
+      avatar={"https://picsum.photos/200/300"}
+      nickname={"Your NickName"}
+      place={formData.location}
+      picture={formData.picture}
+      description={formData.description}
+    />
+  );
+
+  return (
+    <div className={classes.container}>
+      <nav className={classes.buttonsContainer}>
+        <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>
+          <ArrowBackIos /> Back
+        </Button>
+        <Button variant={"contained"} className={classes.goBackButton} onClick={handlePreview}>
+          {(!preview && "Preview") || "Edit"}
+        </Button>
+      </nav>
+      {(!preview && form) || postPreview}
     </div>
   );
 };
 
+//NewPost.propTypes = {
+//  classes: PropTypes.object.isRequired,
+//};
+
+//export default withStyles(useStyles)(NewPost);
 export default NewPost;

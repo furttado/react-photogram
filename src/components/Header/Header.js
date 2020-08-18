@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { useStyles } from "./styles";
-import { RouteContext } from "../../context/routeContext";
+import { RouteContext } from "../../hooks/routeContext";
 import { updateRoute } from "../../services/updateRoute";
 
 import { AppBar, Toolbar, Button, InputBase, Hidden, Avatar } from "@material-ui/core";
-import { Home, ExitToApp, AddAPhoto, Search } from "@material-ui/icons";
+import { Home, ExitToApp, AddAPhoto } from "@material-ui/icons";
 
 import photoGramIcon from "../../assets/images/photogram-black.svg";
 const avatarImg = "https://i.pinimg.com/originals/e4/57/e9/e457e9abaabaf01aa957a9b7def01326.jpg";
@@ -21,7 +21,7 @@ const Header = (props) => {
 
   useEffect(() => {
     updateRoute(routeValue, setRouteValue);
-  }, [routeValue]);
+  }, [routeValue, setRouteValue]);
 
   return (
     <React.Fragment>
@@ -30,7 +30,7 @@ const Header = (props) => {
           <AppBar className={classes.appBar} elevation={0}>
             <Toolbar className={classes.toolbar}>
               <section className={classes.section}>
-                <img src={photoGramIcon} className={classes.icon} />
+                <img src={photoGramIcon} className={classes.icon} alt="Photogram icon" />
 
                 <Hidden smDown>
                   <InputBase

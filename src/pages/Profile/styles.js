@@ -64,7 +64,6 @@ export const useStyles = makeStyles((theme) => ({
   detailsContainer: {
     gridArea: "details",
     marginTop: "1em",
-    justifyContent: "center",
     textAlign: "center",
     display: "flex",
     justifyContent: "space-around",

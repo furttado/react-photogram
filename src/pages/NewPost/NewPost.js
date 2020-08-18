@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+//import PropTypes from "prop-types";
+//import { withStyles } from "@material-ui/core/styles";
 
 import { useStyles } from "./styles";
 import history from "../../routes/history";
@@ -11,7 +13,6 @@ import PostItem from "../../components/PostItem";
 const NewPost = () => {
   const classes = useStyles();
   const [routeValue, setRouteValue] = useContext(RouteContext);
-  const [inputValue, setInputValue] = useState("");
   const initialFormData = { location: "", picture: "", description: "", role: "" };
   const [formData, setFormData] = useState(initialFormData);
   const [preview, setPreview] = useState(false);
@@ -90,7 +91,7 @@ const NewPost = () => {
         </Select>
         <Button
           variant={"contained"}
-          className={[classes.postButton, classes.TextField]}
+          className={(classes.postButton, classes.TextField)}
           onClick={handleSubmit}
         >
           Post
@@ -125,4 +126,9 @@ const NewPost = () => {
   );
 };
 
+//NewPost.propTypes = {
+//  classes: PropTypes.object.isRequired,
+//};
+
+//export default withStyles(useStyles)(NewPost);
 export default NewPost;

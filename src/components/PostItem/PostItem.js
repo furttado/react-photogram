@@ -16,11 +16,6 @@ import {
 
 import { useStyles } from "./styles";
 
-const avatarImg =
-  "https://webcdn.appcloudbox.net/zmoji/wp-content/uploads/2019/11/5-Incredible-Avatar-Maker-Free-Tools-You%E2%80%99ve-Missed-Before.jpg";
-const cardMedia =
-  "https://media.gazetadopovo.com.br/2018/02/785da6273456e732a1844b738ca4694e-gpMedium.jpg";
-
 const PostItem = (props) => {
   const classes = useStyles();
   const [like, setLike] = useState(false);

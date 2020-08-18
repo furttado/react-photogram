@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { RouteContext } from "../../hooks/routeContext";
@@ -20,7 +20,7 @@ const Register = () => {
 
   useEffect(() => {
     updateRoute(routeValue, setRouteValue);
-  }, [routeValue]);
+  }, [routeValue, setRouteValue]);
 
   return (
     <div className={classes.wrapper}>

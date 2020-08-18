@@ -6,7 +6,7 @@ import { RouteContext } from "../../hooks/routeContext";
 
 import { Button, TextField, Select } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
-import { transparent } from "material-ui/styles/colors";
+import PostItem from "../../components/PostItem";
 
 const NewPost = () => {
   const classes = useStyles();
@@ -14,8 +14,12 @@ const NewPost = () => {
   const [inputValue, setInputValue] = useState("");
   const initialFormData = { location: "", picture: "", description: "", role: "" };
   const [formData, setFormData] = useState(initialFormData);
+  const [preview, setPreview] = useState(false);
 
   function handleGoBack() {
+    if (preview) {
+      return handlePreview();
+    }
     setRouteValue(history.goBack);
   }
 
@@ -29,6 +33,10 @@ const NewPost = () => {
     console.log("formData", formData);
     console.log("Post done!");
     handleGoBack();
+  }
+
+  function handlePreview() {
+    setPreview(!preview);
   }
 
   const form = (
@@ -91,12 +99,28 @@ const NewPost = () => {
     </React.Fragment>
   );
 
+  const postPreview = (
+    <PostItem
+      id={"post.postId"}
+      avatar={"https://picsum.photos/200/300"}
+      nickname={"Your NickName"}
+      place={formData.location}
+      picture={formData.picture}
+      description={formData.description}
+    />
+  );
+
   return (
     <div className={classes.container}>
-      <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>
-        <ArrowBackIos /> Back
-      </Button>
-      <React.Fragment>{form}</React.Fragment>
+      <nav className={classes.buttonsContainer}>
+        <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>
+          <ArrowBackIos /> Back
+        </Button>
+        <Button variant={"contained"} className={classes.goBackButton} onClick={handlePreview}>
+          {(!preview && "Preview") || "Edit"}
+        </Button>
+      </nav>
+      {(!preview && form) || postPreview}
     </div>
   );
 };

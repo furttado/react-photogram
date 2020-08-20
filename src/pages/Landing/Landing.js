@@ -6,7 +6,6 @@ import { generateKey } from "../../services/generateKey";
 import { useStyles } from "./styles";
 import { mockPost } from "../../services/mocks";
 
-import Header from "../../components/Header";
 import PostItem from "../../components/PostItem";
 
 const Landing = (props) => {
@@ -21,7 +20,6 @@ const Landing = (props) => {
 
   return (
     <React.Fragment>
-      <Header history={props.history} />
       <div className={classes.container}>
         {mockPost.map((post) => (
           <PostItem

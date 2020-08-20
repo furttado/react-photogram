@@ -12,7 +12,7 @@ const avatarImg = "https://i.pinimg.com/originals/e4/57/e9/e457e9abaabaf01aa957a
 
 const Header = (props) => {
   const classes = useStyles();
-  const { globalState, logout } = useContext(GlobalContext);
+  const { globalState, logout, updateActiveRoute } = useContext(GlobalContext);
 
   function handleLogout() {
     logout();
@@ -39,6 +39,7 @@ const Header = (props) => {
                   (globalState.activeRoute === "/" && classes.activeButton) ||
                   classes.activeButton.default
                 }
+                onClick={() => updateActiveRoute("/")}
               >
                 <Home />
               </Button>
@@ -50,11 +51,12 @@ const Header = (props) => {
                   (globalState.activeRoute === "/new-post" && classes.activeButton) ||
                   classes.activeButton.default
                 }
+                onClick={() => updateActiveRoute("/new-post")}
               >
                 <AddAPhoto />
               </Button>
 
-              <Button component={Link} to="/profile">
+              <Button component={Link} to="/profile" onClick={() => updateActiveRoute("/profile")}>
                 <Avatar
                   alt={"user.name"}
                   src={avatarImg}

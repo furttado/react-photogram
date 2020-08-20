@@ -50,6 +50,12 @@ export default createMuiTheme({
       height: "100vh",
       width: "100vw",
     },
+    buttonDefault: {
+      textTransform: "uppercase",
+      outline: "none",
+      color: box,
+    },
+
     blueButton: {
       marginTop: "1%",
       background: blueButton,

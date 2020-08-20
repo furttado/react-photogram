@@ -3,7 +3,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "../../hooks/GlobalState";
 import { generateKey } from "../../services/generateKey";
 import PostItem from "../../components/PostItem";
-import Header from "../../components/Header";
 
 import { mockPost } from "../../services/mocks";
 import { useStyles } from "./styles";
@@ -30,7 +29,6 @@ const Profile = (props) => {
 
   return (
     <React.Fragment>
-      <Header history={props.history} />
       <div className={classes.container}>
         {/* ============== avatar ==============*/}
         <section>
@@ -43,10 +41,10 @@ const Profile = (props) => {
             jessy_
           </Typography>
           <Button
-            className={(!follow && classes.button) || classes.unfollowButton}
+            className={!follow ? classes.button : classes.unfollowButton}
             onClick={handleFollow}
           >
-            {(!follow && "Follow") || "Unfollow"}
+            {!follow ? "Follow" : "Unfollow"}
           </Button>
         </section>
         {/* ============== detailsContainer ==============*/}
@@ -84,7 +82,9 @@ const Profile = (props) => {
           </main>
         </section>
       </div>
-      <Divider />
+      {/* <Divider className={classes.divider} /> */}
+      <hr className={classes.divider} />
+
       {mockPost.map((post) => {
         if (post.author === "authorId_2") {
           return (

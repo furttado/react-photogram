@@ -4,7 +4,6 @@ import { GlobalContext } from "../../hooks/GlobalState";
 import { useStyles } from "./styles";
 
 import PostItem from "../../components/PostItem";
-import Header from "../../components/Header";
 
 import { Button, TextField, Select } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
@@ -18,6 +17,7 @@ const NewPost = (props) => {
   const [preview, setPreview] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (window.location.pathname !== globalState.activeRoute) {
       updateActiveRoute(window.location.pathname);
     }
@@ -97,7 +97,7 @@ const NewPost = (props) => {
         </Select>
         <Button
           variant={"contained"}
-          className={(classes.postButton, classes.TextField)}
+          className={`${classes.postButton} ${classes.TextField}`}
           onClick={handleSubmit}
         >
           Post
@@ -119,7 +119,6 @@ const NewPost = (props) => {
 
   return (
     <React.Fragment>
-      <Header history={props.history} />
       <div className={classes.container}>
         <nav className={classes.buttonsContainer}>
           <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>

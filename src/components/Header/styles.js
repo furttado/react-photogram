@@ -6,6 +6,7 @@ export const useStyles = makeStyles((theme) => ({
     padding: 0,
     width: "100vw",
     border: `1px solid ${theme.palette.common.border}`,
+    overflow: "hidden",
   },
   toolbar: {
     background: theme.palette.common.box,

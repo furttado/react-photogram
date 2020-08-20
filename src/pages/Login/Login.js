@@ -4,22 +4,23 @@ import { Link } from "react-router-dom";
 import { useStyles } from "../Register/styles";
 import { GlobalContext } from "../../hooks/GlobalState";
 
-import { Button, TextField } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 import photoGramIcon from "../../assets/images/photogram-black.svg";
 
 const Login = (props) => {
   const classes = useStyles();
-  const { globalState, login } = useContext(GlobalContext);
+  const { login, updateActiveRoute } = useContext(GlobalContext);
 
   function handleLogin() {
-    login();
     localStorage.setItem("@App:JWT_TOKEN", "userTokenjwt");
+    login();
+    updateActiveRoute("/");
     props.history.push("/");
   }
-
-  console.log("LOGIN PAGE: isLoggedIn => ", globalState.isLoggedIn);
 
   return (
     <div className={classes.wrapper}>
@@ -51,8 +52,6 @@ const Login = (props) => {
               elevation={0}
               className={classes.loginButton}
               onClick={handleLogin}
-              component={Link}
-              to="/"
             >
               Login
             </Button>

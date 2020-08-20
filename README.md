@@ -15,8 +15,9 @@ The project is under development and aims to help me practice and consolidate th
 
 
 ## 🚀 Live Demo
-
+* http://bit.ly/photogram-v1-1
 * https://bit.ly/photogram-v1
+
 
 
 

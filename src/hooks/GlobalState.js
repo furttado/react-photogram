@@ -1,8 +1,10 @@
 import React, { createContext, useReducer } from "react";
+
 import reducer from "./reducer";
+import { isAuthenticated } from "../routes/Route";
 
 const initialState = {
-  isLoggedIn: false,
+  isLoggedIn: isAuthenticated(),
   activeRoute: "",
   userProfile: [
     {

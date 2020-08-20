@@ -33,6 +33,11 @@ export const useStyles = makeStyles((theme) => ({
     paddingLeft: "10%",
     marginRight: "5%",
     justifySelf: "left",
+
+    [theme.breakpoints.up("sm")]: {
+      height: "80%",
+      width: "auto",
+    },
     [theme.breakpoints.up("md")]: {
       paddingLeft: "5%",
     },

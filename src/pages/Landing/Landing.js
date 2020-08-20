@@ -1,26 +1,41 @@
-import React from "react";
-import PostItem from "../../components/PostItem";
+import React, { useContext, useEffect } from "react";
+
+import { GlobalContext } from "../../hooks/GlobalState";
+import { generateKey } from "../../services/generateKey";
 
 import { useStyles } from "./styles";
-import { generateKey } from "../../services/generateKey";
 import { mockPost } from "../../services/mocks";
+
+import Header from "../../components/Header";
+import PostItem from "../../components/PostItem";
 
 const Landing = (props) => {
   const classes = useStyles();
+  const { globalState, updateActiveRoute } = useContext(GlobalContext);
+
+  useEffect(() => {
+    if (window.location.pathname !== globalState.activeRoute) {
+      updateActiveRoute(window.location.pathname);
+    }
+  }, [globalState.activeRoute, updateActiveRoute]);
+
   return (
-    <div className={classes.container}>
-      {mockPost.map((post) => (
-        <PostItem
-          key={generateKey()}
-          id={post.postId}
-          avatar={post.authorAvatar}
-          nickname={post.nickname}
-          place={post.place}
-          picture={post.picture}
-          description={post.description}
-        />
-      ))}
-    </div>
+    <React.Fragment>
+      <Header history={props.history} />
+      <div className={classes.container}>
+        {mockPost.map((post) => (
+          <PostItem
+            key={generateKey()}
+            id={post.postId}
+            avatar={post.authorAvatar}
+            nickname={post.nickname}
+            place={post.place}
+            picture={post.picture}
+            description={post.description}
+          />
+        ))}
+      </div>
+    </React.Fragment>
   );
 };
 

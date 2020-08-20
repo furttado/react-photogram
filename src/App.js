@@ -1,6 +1,6 @@
 import React from "react";
 
-import Router from "./routes";
+import Routes from "./routes";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./assets/global-styles/theme";
 import { useStyles } from "./app-styles";
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router className={classes.root} />
+      <Routes className={classes.root} />
     </ThemeProvider>
   );
 };

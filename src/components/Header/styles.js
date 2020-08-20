@@ -6,6 +6,7 @@ export const useStyles = makeStyles((theme) => ({
     padding: 0,
     width: "100vw",
     border: `1px solid ${theme.palette.common.border}`,
+    overflow: "hidden",
   },
   toolbar: {
     background: theme.palette.common.box,
@@ -33,6 +34,11 @@ export const useStyles = makeStyles((theme) => ({
     paddingLeft: "10%",
     marginRight: "5%",
     justifySelf: "left",
+
+    [theme.breakpoints.up("sm")]: {
+      height: "80%",
+      width: "auto",
+    },
     [theme.breakpoints.up("md")]: {
       paddingLeft: "5%",
     },

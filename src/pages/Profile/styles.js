@@ -54,11 +54,15 @@ export const useStyles = makeStyles((theme) => ({
     ...theme.presets.blueButton,
     width: "50%",
     height: "20px",
+    textTransform: "uppercase",
+    outline: "none",
   },
   unfollowButton: {
     ...theme.presets.redButton,
     width: "50%",
     height: "20px",
+    textTransform: "uppercase",
+    outline: "none",
   },
 
   detailsContainer: {
@@ -80,5 +84,12 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: "1em",
 
     [theme.breakpoints.up("md")]: {},
+  },
+  divider: {
+    backgroundColor: theme.palette.common.border,
+    width: "100%",
+    height: 1,
+    border: "1px",
+    marginBottom: "1.5em",
   },
 }));

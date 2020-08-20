@@ -7,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
     gap: "1em",
     width: "100vw",
     maxWidth: "600px",
-    marginTop: "1em",
+    //marginTop: "1em",
     borderRadius: "5px",
     padding: "2%",
     justifyContent: "center",

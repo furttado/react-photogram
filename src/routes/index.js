@@ -1,31 +1,37 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useContext } from "react";
+import { Router, Route, Switch } from "react-router-dom";
 
-import { RouteProvider } from "../hooks/routeContext";
+import PrivateRouter from "./Route";
 
 import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
 import Landing from "../pages/Landing";
 import NewPost from "../pages/NewPost";
+import Login from "../pages/Login";
 import Header from "../components/Header";
 
-function Router(props) {
+import { GlobalContext } from "../hooks/GlobalState";
+
+import { createBrowserHistory } from "history";
+const customHistory = createBrowserHistory();
+
+function Routes(props) {
+  const { globalState } = useContext(GlobalContext);
+
   return (
-    <BrowserRouter>
-      <RouteProvider>
-        <Header />
-        <main className={props.className}>
-          <Switch>
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Register} />
-            <Route exact path="/" component={Landing} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/new-post" component={NewPost} />
-          </Switch>
-        </main>
-      </RouteProvider>
-    </BrowserRouter>
+    <Router history={customHistory}>
+      <div className={props.container}>
+        {globalState.isLoggedIn && <Header history={customHistory} />}
+        <Switch>
+          <PrivateRouter exact path="/" component={Landing} />
+          <PrivateRouter path="/profile" component={Profile} />
+          <PrivateRouter path="/new-post" component={NewPost} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default Router;
+export default Routes;

@@ -51,6 +51,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   loginButton: {
+    //...theme.presets.blueButton,
     marginTop: "1%",
     background: theme.palette.common.blueButton,
     borderRadius: 3,

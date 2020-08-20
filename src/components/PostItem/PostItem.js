@@ -1,7 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { RouteContext } from "../../hooks/routeContext";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import {
   Card,
@@ -19,11 +18,6 @@ import { useStyles } from "./styles";
 const PostItem = (props) => {
   const classes = useStyles();
   const [like, setLike] = useState(false);
-  const [routeValue, setRouteValue] = useContext(RouteContext);
-
-  const handleChangeRoute = (value) => {
-    setRouteValue(value);
-  };
 
   function handleLike() {
     setLike(!like);
@@ -38,7 +32,6 @@ const PostItem = (props) => {
         component={Link}
         to={"/profile"}
         style={{ textDecoration: "none", color: "inherit" }}
-        onClick={() => handleChangeRoute(3)}
       />
       <CardMedia title={props.place} image={props.picture} className={classes.media} />
       <CardContent>

@@ -1,27 +1,37 @@
-import React, { useState, useContext } from "react";
-//import PropTypes from "prop-types";
-//import { withStyles } from "@material-ui/core/styles";
+import React, { useState, useContext, useEffect } from "react";
 
+import { GlobalContext } from "../../hooks/GlobalState";
 import { useStyles } from "./styles";
-import history from "../../routes/history";
-import { RouteContext } from "../../hooks/routeContext";
+
+import PostItem from "../../components/PostItem";
 
 import { Button, TextField, Select } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
-import PostItem from "../../components/PostItem";
 
-const NewPost = () => {
+const NewPost = (props) => {
   const classes = useStyles();
-  const [routeValue, setRouteValue] = useContext(RouteContext);
+  const { globalState, updateActiveRoute } = useContext(GlobalContext);
+
   const initialFormData = { location: "", picture: "", description: "", role: "" };
   const [formData, setFormData] = useState(initialFormData);
   const [preview, setPreview] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (window.location.pathname !== globalState.activeRoute) {
+      updateActiveRoute(window.location.pathname);
+    }
+  }, [globalState.activeRoute, updateActiveRoute]);
+
+  function handlePreview() {
+    setPreview(!preview);
+  }
 
   function handleGoBack() {
     if (preview) {
       return handlePreview();
     }
-    setRouteValue(history.goBack);
+    props.history.goBack();
   }
 
   function handleChange(event) {
@@ -34,10 +44,6 @@ const NewPost = () => {
     console.log("formData", formData);
     console.log("Post done!");
     handleGoBack();
-  }
-
-  function handlePreview() {
-    setPreview(!preview);
   }
 
   const form = (
@@ -91,7 +97,7 @@ const NewPost = () => {
         </Select>
         <Button
           variant={"contained"}
-          className={(classes.postButton, classes.TextField)}
+          className={`${classes.postButton} ${classes.TextField}`}
           onClick={handleSubmit}
         >
           Post
@@ -112,23 +118,20 @@ const NewPost = () => {
   );
 
   return (
-    <div className={classes.container}>
-      <nav className={classes.buttonsContainer}>
-        <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>
-          <ArrowBackIos /> Back
-        </Button>
-        <Button variant={"contained"} className={classes.goBackButton} onClick={handlePreview}>
-          {(!preview && "Preview") || "Edit"}
-        </Button>
-      </nav>
-      {(!preview && form) || postPreview}
-    </div>
+    <React.Fragment>
+      <div className={classes.container}>
+        <nav className={classes.buttonsContainer}>
+          <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>
+            <ArrowBackIos /> Back
+          </Button>
+          <Button variant={"contained"} className={classes.goBackButton} onClick={handlePreview}>
+            {(!preview && "Preview") || "Edit"}
+          </Button>
+        </nav>
+        {(!preview && form) || postPreview}
+      </div>
+    </React.Fragment>
   );
 };
 
-//NewPost.propTypes = {
-//  classes: PropTypes.object.isRequired,
-//};
-
-//export default withStyles(useStyles)(NewPost);
 export default NewPost;

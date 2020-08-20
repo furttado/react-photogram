@@ -1,25 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
-import { Typography, Avatar, Divider, Button } from "@material-ui/core";
+import { GlobalContext } from "../../hooks/GlobalState";
+import { generateKey } from "../../services/generateKey";
 import PostItem from "../../components/PostItem";
 
-import { useStyles } from "./styles";
-import { generateKey } from "../../services/generateKey";
 import { mockPost } from "../../services/mocks";
+import { useStyles } from "./styles";
+
+import { Typography, Avatar, Divider, Button } from "@material-ui/core";
 
 const avatarImg = "https://i.pinimg.com/originals/e4/57/e9/e457e9abaabaf01aa957a9b7def01326.jpg";
 
-const Profile = () => {
+const Profile = (props) => {
   const classes = useStyles();
+  const { globalState, updateActiveRoute } = useContext(GlobalContext);
   const [follow, setFollow] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (window.location.pathname !== globalState.activeRoute) {
+      updateActiveRoute(window.location.pathname);
+    }
+  }, [globalState.activeRoute, updateActiveRoute]);
 
   function handleFollow() {
     setFollow(!follow);
   }
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <React.Fragment>
@@ -34,15 +40,12 @@ const Profile = () => {
           <Typography variant="subtitle1" className={classes.userNameTypography}>
             jessy_
           </Typography>
-          {(follow === false && (
-            <Button className={classes.button} onClick={handleFollow}>
-              Follow
-            </Button>
-          )) || (
-            <Button className={classes.unfollowButton} onClick={handleFollow}>
-              Unfollow
-            </Button>
-          )}
+          <Button
+            className={!follow ? classes.button : classes.unfollowButton}
+            onClick={handleFollow}
+          >
+            {!follow ? "Follow" : "Unfollow"}
+          </Button>
         </section>
         {/* ============== detailsContainer ==============*/}
         <section className={classes.detailsContainer}>
@@ -71,7 +74,7 @@ const Profile = () => {
           <main>
             <Typography variant="subtitle1">Jessy</Typography>
             <Typography variant="body2">
-              💞 Fotógrafa & youtuber <br /> 🌎 Google Local Guide <br />
+              💞 Photographer & youtuber <br /> 🌎 Google Local Guide <br />
               📸 @jessy
               <br />
               📺 tv.com/jessy
@@ -79,7 +82,9 @@ const Profile = () => {
           </main>
         </section>
       </div>
-      <Divider />
+      {/* <Divider className={classes.divider} /> */}
+      <hr className={classes.divider} />
+
       {mockPost.map((post) => {
         if (post.author === "authorId_2") {
           return (

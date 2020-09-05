@@ -10,7 +10,6 @@ import Landing from "../pages/Landing";
 import NewPost from "../pages/NewPost";
 import Login from "../pages/Login";
 import Header from "../components/Header";
-import Teste from "../pages/Teste";
 
 import { createBrowserHistory } from "history";
 export const customHistory = createBrowserHistory();
@@ -28,7 +27,6 @@ function Routes(props) {
           <PrivateRouter path="/new-post" component={NewPost} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          <Route path="/teste" component={Teste} />
         </Switch>
       </div>
     </Router>

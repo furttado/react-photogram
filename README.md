@@ -31,6 +31,8 @@ The project is under development and aims to help me practice and consolidate th
 * React Hooks
 * uuid
 * Material UI
+* Redux
+* Axios
 
 
 
@@ -42,8 +44,9 @@ The project is under development and aims to help me practice and consolidate th
   * Login ✅
   * Landing (feed) ✅
   * Profile ✅
-    * edit profile ⚠️
+    * edit profile ✔
     * grid view ⚠️
+    * total posts ✔
     * list followers ⚠️
     * list following ⚠️
   * New Post  ✅
@@ -51,10 +54,14 @@ The project is under development and aims to help me practice and consolidate th
 
 * **Components**
 
-  * Header (toolbar)
+  * Header (toolbar)  ✔
   * PostItem
     * comment field ⚠️
     * show comments ⚠️
+  * Dialog ✔
+  * Profile warnings ✔
+  * Profile settings edit ✔
+  * Profile Item ✔
 
   
 
@@ -70,9 +77,27 @@ The project is under development and aims to help me practice and consolidate th
 
 * **Routes** ✅
 
-  * Active page and route (global state) ✅
+  * Active page and route (global state with Redux) ✔
+  
+* **Redux integration** ✅
 
+* **API integration** ⌛
 
+  * register ✔
+  * login ✔
+  * feed ⚠️
+  * logged user profile ✔
+  * edit profile ✔
+  * create post ✔
+  * edit post  ⚠️
+  * like a post ⚠️
+  * comment a post ⚠️
+  * delete post ⚠️
+  * get any user profile ✔
+  * follow user ✔
+  * unfollow user ✔
+
+  
 
 ## ⬇️ Clone this project
 

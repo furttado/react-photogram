@@ -1,37 +1,42 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 
 import PrivateRouter from "./Route";
 
-import Profile from "../pages/Profile/Profile";
+import Profile from "../pages/Profile";
 import Register from "../pages/Register/Register";
 import Landing from "../pages/Landing";
 import NewPost from "../pages/NewPost";
 import Login from "../pages/Login";
 import Header from "../components/Header";
-
-import { GlobalContext } from "../hooks/GlobalState";
+import Teste from "../pages/Teste";
 
 import { createBrowserHistory } from "history";
-const customHistory = createBrowserHistory();
+export const customHistory = createBrowserHistory();
 
 function Routes(props) {
-  const { globalState } = useContext(GlobalContext);
+  const { isAuthenticated } = props;
 
   return (
     <Router history={customHistory}>
       <div className={props.container}>
-        {globalState.isLoggedIn && <Header history={customHistory} />}
+        {isAuthenticated && <Header history={customHistory} />}
         <Switch>
           <PrivateRouter exact path="/" component={Landing} />
-          <PrivateRouter path="/profile" component={Profile} />
+          <PrivateRouter path="/profile/:nickname" component={Profile} />
           <PrivateRouter path="/new-post" component={NewPost} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/teste" component={Teste} />
         </Switch>
       </div>
     </Router>
   );
 }
 
-export default Routes;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(Routes);

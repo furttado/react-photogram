@@ -60,4 +60,9 @@ export const useStyles = makeStyles((theme) => ({
       marginLeft: 0,
     },
   },
+  progress: {
+    color: "white",
+    padding: "3%",
+    //fontSize: "5px",
+  },
 }));

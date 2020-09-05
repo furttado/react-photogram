@@ -2,14 +2,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export const useStyles = makeStyles((theme) => ({
   wrapper: {
-    ...theme.presets.centeredWrapper,
+    height: "100%",
+    width: "100%",
   },
 
   content: {
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "column",
     width: "300px",
+    marginTop: "2rem",
+    paddingBottom: "2rem",
   },
 
   header: {
@@ -29,15 +29,15 @@ export const useStyles = makeStyles((theme) => ({
     display: "grid",
     gridTemplateColumns: "1fr",
     gap: "2%",
-    marginBottom: "20%",
+    marginBottom: "6rem",
   },
 
   formLogin: {
     display: "grid",
     gridTemplateColumns: "1fr",
-    gap: "3%",
-    marginBottom: "7%",
-    marginTop: "5%",
+    gap: "0.7rem",
+    marginBottom: "1rem",
+    //marginTop: "5%",
   },
 
   registerButton: {
@@ -48,11 +48,13 @@ export const useStyles = makeStyles((theme) => ({
     height: 48,
     padding: "0 30px",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    width: "100%",
   },
 
   loginButton: {
     //...theme.presets.blueButton,
-    marginTop: "1%",
+    width: "100%",
+    marginTop: "1rem",
     background: theme.palette.common.blueButton,
     borderRadius: 3,
     border: 0,
@@ -66,5 +68,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   textField: {
     background: theme.palette.common.box,
+
+    "& textarea": {
+      height: "300px",
+    },
+  },
+  progress: {
+    color: "white",
+    padding: "3%",
+    //fontSize: 3,
   },
 }));

@@ -1,27 +1,56 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
-import { GlobalContext } from "../../hooks/GlobalState";
+import { setActiveRoute } from "../../store/ducks/styles/activeRoute";
+import { fetchAddPost } from "../../store/ducks/posts/addPost/actions";
+import { setDefault as setDefaultPostStatus } from "../../store/ducks/posts/addPost/actions";
+
 import { useStyles } from "./styles";
-
 import PostItem from "../../components/PostItem";
 
-import { Button, TextField, Select } from "@material-ui/core";
+import { Button, TextField, Select, CircularProgress } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
 
 const NewPost = (props) => {
   const classes = useStyles();
-  const { globalState, updateActiveRoute } = useContext(GlobalContext);
 
   const initialFormData = { location: "", picture: "", description: "", role: "" };
   const [formData, setFormData] = useState(initialFormData);
   const [preview, setPreview] = useState(false);
+  const [progress, setProgress] = useState(false);
+  const [disableButton, setDisableButton] = useState(true);
+
+  const {
+    activeRoute,
+    setActiveRoute,
+    mainProfile,
+    fetchAddPost,
+    addPostStatus,
+    setDefaultPostStatus,
+  } = props;
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (window.location.pathname !== globalState.activeRoute) {
-      updateActiveRoute(window.location.pathname);
+    if (window.location.pathname !== activeRoute) {
+      setActiveRoute(window.location.pathname);
     }
-  }, [globalState.activeRoute, updateActiveRoute]);
+
+    if (addPostStatus.loading) {
+      setProgress(true);
+    }
+
+    if (addPostStatus.success) {
+      setDefaultPostStatus();
+      handleGoBack();
+    }
+
+    if (formData.location && formData.picture && formData.description) {
+      setDisableButton(false);
+    }
+    if (!formData.location || !formData.picture || !formData.description) {
+      setDisableButton(true);
+    }
+  }, [activeRoute, addPostStatus, formData]);
 
   function handlePreview() {
     setPreview(!preview);
@@ -39,11 +68,9 @@ const NewPost = (props) => {
     setFormData({ ...formData, [id]: value });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log("formData", formData);
-    console.log("Post done!");
-    handleGoBack();
+    fetchAddPost(formData);
   }
 
   const form = (
@@ -99,8 +126,9 @@ const NewPost = (props) => {
           variant={"contained"}
           className={`${classes.postButton} ${classes.TextField}`}
           onClick={handleSubmit}
+          disabled={disableButton} //progress
         >
-          Post
+          {!progress ? "Post" : <CircularProgress className={classes.progress} />}
         </Button>
       </form>
     </React.Fragment>
@@ -109,8 +137,8 @@ const NewPost = (props) => {
   const postPreview = (
     <PostItem
       id={"post.postId"}
-      avatar={"https://picsum.photos/200/300"}
-      nickname={"Your NickName"}
+      avatar={mainProfile.data.picture}
+      nickname={mainProfile.data.nickname}
       place={formData.location}
       picture={formData.picture}
       description={formData.description}
@@ -124,7 +152,12 @@ const NewPost = (props) => {
           <Button variant={"contained"} className={classes.goBackButton} onClick={handleGoBack}>
             <ArrowBackIos /> Back
           </Button>
-          <Button variant={"contained"} className={classes.goBackButton} onClick={handlePreview}>
+          <Button
+            variant={"contained"}
+            className={classes.goBackButton}
+            onClick={handlePreview}
+            disabled={disableButton}
+          >
             {(!preview && "Preview") || "Edit"}
           </Button>
         </nav>
@@ -134,4 +167,17 @@ const NewPost = (props) => {
   );
 };
 
-export default NewPost;
+const mapStateToProps = (state) => ({
+  activeRoute: state.activeRoute.route,
+  mainProfile: state.mainProfile,
+  addPostStatus: state.addPostStatus,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setActiveRoute: (route) => dispatch(setActiveRoute(route)),
+    fetchAddPost: (post) => dispatch(fetchAddPost(post)),
+    setDefaultPostStatus: () => dispatch(setDefaultPostStatus()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

@@ -5,17 +5,17 @@ import { ThemeProvider } from "@material-ui/styles";
 import theme from "./assets/global-styles/theme";
 import { CssBaseline } from "@material-ui/core";
 
-import { GlobalProvider } from "./hooks/GlobalState";
+import store from "./store";
+import { Provider } from "react-redux";
+
 import App from "./App";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <GlobalProvider>
-        <App />
-      </GlobalProvider>
+      <App />
     </ThemeProvider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );

@@ -4,6 +4,10 @@
 </h1>
 
 
+<h1 align="center" >
+      <a href="https://github.com/furttado/react-photogram"><img src="./app-snapshot-gif.gif" alt="Photogram"/></a> 
+</h1>
+
 
 
 ## 📢 About

@@ -1,5 +1,7 @@
 import { types } from "./types";
 import api from "../../../../services/api";
+import { fetchMainProfile } from "../../mainProfile/actions";
+import { fetchAllPosts } from "../allPosts/actions";
 
 export const fetchAddPost = (post) => {
   const body = {
@@ -13,6 +15,8 @@ export const fetchAddPost = (post) => {
     try {
       await api.post(`posts/create`, body);
       dispatch(addPost());
+      dispatch(fetchMainProfile());
+      dispatch(fetchAllPosts());
     } catch (err) {
       dispatch(setError(err.response.data));
     }

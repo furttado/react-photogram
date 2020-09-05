@@ -30,7 +30,6 @@ const NewPost = (props) => {
   } = props;
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     if (window.location.pathname !== activeRoute) {
       setActiveRoute(window.location.pathname);
     }

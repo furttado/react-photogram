@@ -31,6 +31,7 @@ const Profile = (props) => {
   } = props;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setActiveRoute(`/profile`);
     if (nickname !== mainProfile.data.nickname) {
       fetchFriendProfile(nickname);

@@ -1,0 +1,9 @@
+export const LOADING = "LOADING";
+export const SET_MAIN_PROFILE = "SET_MAIN_PROFILE";
+export const ERROR = "ERROR";
+
+export const types = {
+  LOADING_ALL_POSTS: "LOADING_ALL_POSTS",
+  SET_ALL_POSTS: "SET_ALL_POSTS",
+  ERROR_ALL_POSTS: "ERROR_ALL_POSTS",
+};

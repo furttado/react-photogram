@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import {
@@ -29,9 +28,10 @@ const PostItem = (props) => {
         avatar={<Avatar alt="profile avatar" src={props.avatar} className={classes.avatar} />}
         title={props.nickname}
         subheader={props.place}
-        component={Link}
-        to={"/profile"}
+        component={props.component}
+        to={`/profile/${props.to}`}
         style={{ textDecoration: "none", color: "inherit" }}
+        //onClick={props.onClick}
       />
       <CardMedia title={props.place} image={props.picture} className={classes.media} />
       <CardContent>

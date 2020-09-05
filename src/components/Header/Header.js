@@ -1,24 +1,32 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+
 import { Link } from "react-router-dom";
 
 import { useStyles } from "./styles";
-import { GlobalContext } from "../../hooks/GlobalState";
 
 import { AppBar, Toolbar, Button, InputBase, Hidden, Avatar } from "@material-ui/core";
 import { Home, ExitToApp, AddAPhoto } from "@material-ui/icons";
 
 import photoGramIcon from "../../assets/images/photogram-black.svg";
-const avatarImg = "https://i.pinimg.com/originals/e4/57/e9/e457e9abaabaf01aa957a9b7def01326.jpg";
+
+import { fetchMainProfile } from "../../store/ducks/mainProfile/actions";
+import { setActiveRoute } from "../../store/ducks/styles/activeRoute";
+import { fetchLogout } from "../../store/ducks/auth";
 
 const Header = (props) => {
   const classes = useStyles();
-  const { globalState, logout, updateActiveRoute } = useContext(GlobalContext);
+  const { activeRoute, setActiveRoute, mainProfile, fetchMainProfile, fetchLogout } = props;
 
   function handleLogout() {
-    logout();
-    localStorage.removeItem("@App:JWT_TOKEN");
-    props.history.push("/login");
+    fetchLogout();
   }
+
+  useEffect(() => {
+    if (mainProfile.data.length === 0) {
+      fetchMainProfile();
+    }
+  }, [mainProfile.data]);
 
   return (
     <React.Fragment>
@@ -36,10 +44,9 @@ const Header = (props) => {
                 component={Link}
                 to="/"
                 className={
-                  (globalState.activeRoute === "/" && classes.activeButton) ||
-                  classes.activeButton.default
+                  (activeRoute === "/" && classes.activeButton) || classes.activeButton.default
                 }
-                onClick={() => updateActiveRoute("/")}
+                onClick={() => setActiveRoute("/")}
               >
                 <Home />
               </Button>
@@ -48,21 +55,24 @@ const Header = (props) => {
                 component={Link}
                 to="/new-post"
                 className={
-                  (globalState.activeRoute === "/new-post" && classes.activeButton) ||
+                  (activeRoute === "/new-post" && classes.activeButton) ||
                   classes.activeButton.default
                 }
-                onClick={() => updateActiveRoute("/new-post")}
+                onClick={() => setActiveRoute("/new-post")}
               >
                 <AddAPhoto />
               </Button>
 
-              <Button component={Link} to="/profile" onClick={() => updateActiveRoute("/profile")}>
+              <Button
+                component={Link}
+                to={`/profile/${mainProfile.data.nickname}`}
+                onClick={() => setActiveRoute("/profile")}
+              >
                 <Avatar
                   alt={"user.name"}
-                  src={avatarImg}
+                  src={mainProfile.data.picture}
                   className={
-                    (globalState.activeRoute === "/profile" && classes.activeAvatar) ||
-                    classes.inactiveAvatar
+                    (activeRoute === "/profile" && classes.activeAvatar) || classes.inactiveAvatar
                   }
                 />
               </Button>
@@ -79,4 +89,16 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  activeRoute: state.activeRoute.route,
+  mainProfile: state.mainProfile,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchMainProfile: () => dispatch(fetchMainProfile()),
+    setActiveRoute: (route) => dispatch(setActiveRoute(route)),
+    fetchLogout: () => dispatch(fetchLogout()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

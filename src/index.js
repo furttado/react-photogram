@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import JssProvider from "react-jss/lib/JssProvider";
+//import {JssProvider} from "react-jss";
 
 import {
   MuiThemeProvider,
@@ -21,6 +22,8 @@ const jss = create({
   ...jssPreset(),
   insertionPoint: document.getElementById("jss-insertion-point"),
 });
+
+jss.options.createGenerateClassName = generateClassName;
 
 ReactDOM.render(
   <Provider store={store}>

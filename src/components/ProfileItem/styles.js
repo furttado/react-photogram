@@ -21,15 +21,15 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   avatar: {
-    ...theme.spacing.mui,
     gridArea: "avatar",
-    width: theme.spacing(12),
-    height: theme.spacing(12),
-    //border: `4px solid ${theme.palette.common.primaryFont} `,
+    width: "84px",
+    height: "84px",
 
     [theme.breakpoints.up("md")]: {
-      width: theme.spacing(20),
-      height: theme.spacing(20),
+      //width: theme.spacing(20),
+      //height: theme.spacing(20),
+      width: "160px",
+      height: "160px",
       marginRight: "20%",
     },
   },

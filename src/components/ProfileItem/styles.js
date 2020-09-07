@@ -22,16 +22,12 @@ export const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     gridArea: "avatar",
-    //width: "84px",
-    //height: "84px",
     width: theme.spacing(10),
     height: theme.spacing(10),
 
     [theme.breakpoints.up("md")]: {
       width: theme.spacing(20),
       height: theme.spacing(20),
-      //width: "160px",
-      //height: "160px",
       marginRight: "20%",
     },
   },
@@ -49,16 +45,18 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   button: {
+    ...theme.presets.buttonDefault,
     ...theme.presets.blueButton,
     width: "50%",
     height: "20px",
   },
   unfollowButton: {
+    ...theme.presets.buttonDefault,
     ...theme.presets.redButton,
     width: "50%",
     height: "20px",
-    textTransform: "uppercase",
-    outline: "none",
+    // textTransform: "uppercase",
+    // outline: "none",
   },
 
   detailsContainer: {

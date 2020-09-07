@@ -19,10 +19,7 @@ import App from "./App";
 const generateClassName = createGenerateClassName();
 const jss = create(jssPreset());
 jss.options.insertionPoint = "jss-insertion-point";
-jss.options.createGenerateClassName = generateClassName;
-
-console.log(jss);
-console.log(generateClassName);
+//jss.options.createGenerateClassName = generateClassName;
 
 ReactDOM.render(
   <Provider store={store}>

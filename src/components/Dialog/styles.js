@@ -8,9 +8,4 @@ export const useStyles = makeStyles((theme) => ({
     ...theme.presets.redButton,
     marginTop: 0,
   },
-  buttonsContainer: {
-    //display: 'flex',
-    //alignItems: "center",
-    alignContent: "center",
-  },
 }));

@@ -12,10 +12,12 @@ import {
   CardActions,
 } from "@material-ui/core";
 
+import { useTheme } from "@material-ui/core/styles";
 import { useStyles } from "./styles";
 
 const PostItem = (props) => {
   const classes = useStyles();
+  const theme = useTheme();
   const [like, setLike] = useState(false);
 
   function handleLike() {
@@ -25,7 +27,15 @@ const PostItem = (props) => {
   return (
     <Card elevation={0} className={classes.card} id={props.id}>
       <CardHeader
-        avatar={<Avatar alt="profile avatar" src={props.avatar} className={classes.avatar} />}
+        className={classes.cardHeader}
+        avatar={
+          <Avatar
+            alt="profile avatar"
+            src={props.avatar}
+            //className={classes.postAvatar}
+            //style={{ width: theme.spacing(10), height: theme.spacing(10) }}
+          />
+        }
         title={props.nickname}
         subheader={props.place}
         component={props.component}

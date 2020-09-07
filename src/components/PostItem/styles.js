@@ -21,4 +21,11 @@ export const useStyles = makeStyles((theme) => ({
       backgroundColor: "transparent",
     },
   },
+
+  cardHeader: {
+    "& div:first-child": {
+      width: theme.spacing(5),
+      height: theme.spacing(5),
+    },
+  },
 }));

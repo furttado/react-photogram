@@ -54,8 +54,8 @@ export const useStyles = makeStyles((theme) => ({
     ...theme.presets.blueButton,
     width: "50%",
     height: "20px",
-    textTransform: "uppercase",
-    outline: "none",
+    // textTransform: "uppercase",
+    // outline: "none",
   },
   unfollowButton: {
     ...theme.presets.redButton,

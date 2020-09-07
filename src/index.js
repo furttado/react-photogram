@@ -18,7 +18,7 @@ import App from "./App";
 
 const generateClassName = createGenerateClassName();
 const jss = create(jssPreset());
-jss.options.insertionPoint = "jss-insertion-point";
+jss.options.insertionPoint = document.getElementById("jss-insertion-point");
 //jss.options.createGenerateClassName = generateClassName;
 
 ReactDOM.render(

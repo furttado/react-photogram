@@ -125,18 +125,19 @@ export default createMuiTheme({
         height: undefined,
       },
     },
-    ButtonBase: {
+
+    MuiButtonBase: {
       root: {
         color: undefined,
         backgroundColor: undefined,
-        borderRadius: undefined,
+        borderRadius: "5px",
       },
     },
     MuiButton: {
       root: {
         color: undefined,
         backgroundColor: undefined,
-        borderRadius: undefined,
+        borderRadius: "5px",
       },
     },
   },

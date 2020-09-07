@@ -61,7 +61,7 @@ export default createMuiTheme({
     },
 
     blueButton: {
-      marginTop: "1%",
+      //marginTop: "1%",
       background: blueButton,
       borderRadius: 3,
       border: 0,
@@ -116,6 +116,26 @@ export default createMuiTheme({
         },
         body: {
           background: "#ffff",
+        },
+      },
+    },
+    MuiAvatar: {
+      circle: {
+        width: "160px",
+        height: "160px",
+      },
+    },
+    MuiButtonBase: {
+      root: {
+        background: blueButton,
+        borderRadius: 3,
+        border: 0,
+        color: background,
+        height: 48,
+        padding: "0 30px",
+        boxShadow: blueButton,
+        "&:hover": {
+          background: redButton,
         },
       },
     },

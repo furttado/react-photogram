@@ -6,5 +6,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   cancelBtn: {
     ...theme.presets.redButton,
+    marginTop: 0,
+  },
+  buttonsContainer: {
+    //display: 'flex',
+    //alignItems: "center",
+    alignContent: "center",
   },
 }));

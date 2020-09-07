@@ -58,10 +58,12 @@ export const useStyles = makeStyles((theme) => ({
     "& svg": {},
   },
   activeButton: {
+    ...theme.presets.defaultIconButton,
     color: theme.palette.common.redButton,
   },
 
   inactiveButton: {
+    ...theme.presets.defaultIconButton,
     color: theme.palette.common.primaryFont,
   },
   inactiveAvatar: {

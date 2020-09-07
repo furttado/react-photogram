@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { useStyles } from "./styles";
 
-import { AppBar, Toolbar, Button, InputBase, Hidden, Avatar } from "@material-ui/core";
+import { AppBar, Toolbar, Button, InputBase, Hidden, Avatar, IconButton } from "@material-ui/core";
 import { Home, ExitToApp, AddAPhoto } from "@material-ui/icons";
 
 import photoGramIcon from "../../assets/images/photogram-black.svg";
@@ -40,16 +40,16 @@ const Header = (props) => {
             </Hidden>
 
             <nav className={classes.buttonsContainer}>
-              <Button
+              <IconButton
                 component={Link}
                 to="/"
                 className={(activeRoute === "/" && classes.activeButton) || classes.inactiveButton}
                 onClick={() => setActiveRoute("/")}
               >
                 <Home />
-              </Button>
+              </IconButton>
 
-              <Button
+              <IconButton
                 component={Link}
                 to="/new-post"
                 className={
@@ -58,9 +58,9 @@ const Header = (props) => {
                 onClick={() => setActiveRoute("/new-post")}
               >
                 <AddAPhoto />
-              </Button>
+              </IconButton>
 
-              <Button
+              <IconButton
                 component={Link}
                 to={`/profile/${mainProfile.data.nickname}`}
                 onClick={() => setActiveRoute("/profile")}
@@ -72,11 +72,11 @@ const Header = (props) => {
                     (activeRoute === "/profile" && classes.activeAvatar) || classes.inactiveAvatar
                   }
                 />
-              </Button>
+              </IconButton>
 
-              <Button onClick={handleLogout} className={classes.inactiveButton}>
+              <IconButton onClick={handleLogout} className={classes.inactiveButton}>
                 <ExitToApp />
-              </Button>
+              </IconButton>
             </nav>
           </section>
         </Toolbar>

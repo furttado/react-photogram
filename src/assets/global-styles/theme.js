@@ -100,6 +100,10 @@ export default createMuiTheme({
         boxShadow: "none",
       },
     },
+    defaultIconButton: {
+      backgroundColor: "transparent",
+      "& :hover": { backgroundColor: "transparent" },
+    },
   },
 
   overrides: {
@@ -131,6 +135,10 @@ export default createMuiTheme({
         color: undefined,
         backgroundColor: undefined,
         borderRadius: "5px",
+        textTransform: "uppercase",
+
+        backgroundColor: "transparent",
+        "& :hover": { backgroundColor: "transparent" },
       },
     },
     MuiButton: {
@@ -138,6 +146,10 @@ export default createMuiTheme({
         color: undefined,
         backgroundColor: undefined,
         borderRadius: "5px",
+        textTransform: "uppercase",
+
+        backgroundColor: "transparent",
+        "& :hover": { backgroundColor: "transparent" },
       },
     },
   },

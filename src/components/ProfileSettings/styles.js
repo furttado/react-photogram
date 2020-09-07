@@ -51,4 +51,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "grid",
     gridTemplateColumns: "90% 10%",
   },
+  deleteButton: {
+    color: theme.palette.common.primaryFont,
+  },
 }));

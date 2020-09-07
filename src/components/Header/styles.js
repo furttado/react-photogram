@@ -59,9 +59,10 @@ export const useStyles = makeStyles((theme) => ({
   },
   activeButton: {
     color: theme.palette.common.redButton,
-    default: {
-      color: theme.palette.common.primaryFont,
-    },
+  },
+
+  inactiveButton: {
+    color: theme.palette.common.primaryFont,
   },
   inactiveAvatar: {
     width: theme.spacing(3),

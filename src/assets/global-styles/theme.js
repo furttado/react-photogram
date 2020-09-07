@@ -119,5 +119,25 @@ export default createMuiTheme({
         },
       },
     },
+    MuiAvatar: {
+      root: {
+        width: undefined,
+        height: undefined,
+      },
+    },
+    ButtonBase: {
+      root: {
+        color: undefined,
+        backgroundColor: undefined,
+        borderRadius: undefined,
+      },
+    },
+    MuiButton: {
+      root: {
+        color: undefined,
+        backgroundColor: undefined,
+        borderRadius: undefined,
+      },
+    },
   },
 });

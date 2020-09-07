@@ -35,7 +35,7 @@ const ProfileItem = (props) => {
             alt="profile avatar"
             src={avatar}
             classes={{ root: classes.avatar }}
-            variant="circle"
+            //variant="circle"
           />
         </section>
 

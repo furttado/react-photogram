@@ -43,9 +43,7 @@ const Header = (props) => {
               <Button
                 component={Link}
                 to="/"
-                className={
-                  (activeRoute === "/" && classes.activeButton) || classes.activeButton.default
-                }
+                className={(activeRoute === "/" && classes.activeButton) || classes.inactiveButton}
                 onClick={() => setActiveRoute("/")}
               >
                 <Home />
@@ -55,8 +53,7 @@ const Header = (props) => {
                 component={Link}
                 to="/new-post"
                 className={
-                  (activeRoute === "/new-post" && classes.activeButton) ||
-                  classes.activeButton.default
+                  (activeRoute === "/new-post" && classes.activeButton) || classes.inactiveButton
                 }
                 onClick={() => setActiveRoute("/new-post")}
               >
@@ -77,7 +74,7 @@ const Header = (props) => {
                 />
               </Button>
 
-              <Button onClick={handleLogout}>
+              <Button onClick={handleLogout} className={classes.inactiveButton}>
                 <ExitToApp />
               </Button>
             </nav>

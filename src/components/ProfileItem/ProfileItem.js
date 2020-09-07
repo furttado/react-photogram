@@ -31,12 +31,17 @@ const ProfileItem = (props) => {
     <React.Fragment>
       <div className={classes.container}>
         <section>
-          <Avatar alt="profile avatar" src={avatar} className={classes.avatar} />
+          <Avatar
+            alt="profile avatar"
+            src={avatar}
+            classes={{ circle: classes.avatar }}
+            type="container"
+          />
         </section>
 
         <section className={classes.userNameItem}>
           <Typography variant="h2">{nickname}</Typography>
-          <Button className={handleButtonStyle(buttonStyle)} onClick={buttonOnclick}>
+          <Button classes={{ root: handleButtonStyle(buttonStyle) }} onClick={buttonOnclick}>
             {buttonText}
           </Button>
         </section>

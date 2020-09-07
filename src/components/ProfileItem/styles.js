@@ -24,7 +24,6 @@ export const useStyles = makeStyles((theme) => ({
     gridArea: "avatar",
     width: theme.spacing(10),
     height: theme.spacing(10),
-    fontSize: "80px",
 
     [theme.breakpoints.up("md")]: {
       width: theme.spacing(20),
@@ -49,13 +48,15 @@ export const useStyles = makeStyles((theme) => ({
     ...theme.presets.blueButton,
     width: "50%",
     height: "20px",
+    textTransform: "uppercase",
+    outline: "none",
   },
   unfollowButton: {
     ...theme.presets.redButton,
     width: "50%",
     height: "20px",
-    // textTransform: "uppercase",
-    // outline: "none",
+    textTransform: "uppercase",
+    outline: "none",
   },
 
   detailsContainer: {

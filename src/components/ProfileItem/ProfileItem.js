@@ -2,7 +2,7 @@ import React from "react";
 
 import { useStyles } from "./styles";
 
-import { Typography, Avatar, Button } from "@material-ui/core";
+import { Typography, Avatar, ButtonBase } from "@material-ui/core";
 
 const ProfileItem = (props) => {
   const classes = useStyles();
@@ -34,21 +34,21 @@ const ProfileItem = (props) => {
           <Avatar
             alt="profile avatar"
             src={avatar}
-            classes={{ circle: classes.avatar }}
+            classes={{ root: classes.avatar }}
             variant="circle"
           />
         </section>
 
         <section className={classes.userNameItem}>
           <Typography variant="h2">{nickname}</Typography>
-          <Button
+          <ButtonBase
             classes={{
               root: handleButtonStyle(buttonStyle),
             }}
             onClick={buttonOnclick}
           >
             {buttonText}
-          </Button>
+          </ButtonBase>
         </section>
 
         <section className={classes.detailsContainer}>

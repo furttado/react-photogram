@@ -35,9 +35,7 @@ const ProfileItem = (props) => {
         </section>
 
         <section className={classes.userNameItem}>
-          <Typography variant="h6" className={classes.userNameTypography}>
-            {nickname}
-          </Typography>
+          <Typography variant="h2">{nickname}</Typography>
           <Button className={handleButtonStyle(buttonStyle)} onClick={buttonOnclick}>
             {buttonText}
           </Button>

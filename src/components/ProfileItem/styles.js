@@ -21,10 +21,11 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   avatar: {
+    ...theme.spacing.mui,
     gridArea: "avatar",
-    width: theme.spacing(10),
-    height: theme.spacing(10),
-    border: `4px solid ${theme.palette.common.primaryFont} `,
+    width: theme.spacing(12),
+    height: theme.spacing(12),
+    //border: `4px solid ${theme.palette.common.primaryFont} `,
 
     [theme.breakpoints.up("md")]: {
       width: theme.spacing(20),
@@ -45,17 +46,10 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
 
-  userNameTypography: {
-    fontWeight: "100",
-    fontSize: "2rem",
-  },
-
   button: {
     ...theme.presets.blueButton,
     width: "50%",
     height: "20px",
-    // textTransform: "uppercase",
-    // outline: "none",
   },
   unfollowButton: {
     ...theme.presets.redButton,

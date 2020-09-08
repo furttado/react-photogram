@@ -46,6 +46,9 @@ export const useStyles = makeStyles((theme) => ({
   buttonDisabled: {
     backgroundColor: theme.palette.common.border,
   },
+  buttonRoot: {
+    ...theme.presets.blueButton,
+  },
 
   formRow: {
     display: "grid",

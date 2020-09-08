@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useStyles } from "./styles";
-import { Button, Typography, TextField, CircularProgress } from "@material-ui/core";
+import { Button, ButtonBase, Typography, TextField, CircularProgress } from "@material-ui/core";
 import photoGramIcon from "../../assets/images/photogram-black.svg";
 import api from "../../services/api";
 
@@ -18,7 +18,7 @@ const Register = (props) => {
     bio: "",
   };
   const [formData, setFormData] = useState(initialFormData);
-  const [progress, setProgress] = useState(false)
+  const [progress, setProgress] = useState(false);
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -60,21 +60,21 @@ const Register = (props) => {
     }
 
     try {
-      setProgress(true)
+      setProgress(true);
       const body = {
         email: formData.email,
         password: formData.password,
         nickname: formData.nickname,
         name: formData.fullname,
         picture: formData.avatar,
-        bio: formData.bio
+        bio: formData.bio,
       };
       const response = await api.post(`users/register`, body);
       if (response.request.status === 201) {
         props.history.push("/login");
       }
     } catch (err) {
-      setProgress(false)
+      setProgress(false);
       console.log(err);
     }
   };
@@ -159,32 +159,30 @@ const Register = (props) => {
             value={FormData.bio}
             onChange={handleChange}
           />
-          <Button
+          <ButtonBase
             onClick={handleSubmit}
             variant="contained"
             elevation={0}
             className={classes.registerButton}
             disabled={progress}
+            classes={{ root: classes.rootButton }}
           >
-            {!progress ? 'Register' : <CircularProgress className={classes.progress} />}
-          </Button>
+            {!progress ? "Register" : <CircularProgress className={classes.progress} />}
+          </ButtonBase>
         </form>
-        <Typography
-          variant={"body2"}
-          align="center"
-          color="textSecondary"
-        >
+        <Typography variant={"body2"} align="center" color="textSecondary">
           or if you already have an account:
         </Typography>{" "}
-        <Button
+        <ButtonBase
           component={Link}
           to="/login"
           variant="contained"
           elevation={0}
           className={classes.loginButton}
+          classes={{ root: classes.rootButton }}
         >
           Login
-        </Button>
+        </ButtonBase>
       </main>
     </div>
   );

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useStyles } from "../Register/styles";
 import Dialog from "../../components/Dialog";
 
-import { Button, TextField, CircularProgress } from "@material-ui/core";
+import { Button, TextField, CircularProgress, ButtonBase } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import photoGramIcon from "../../assets/images/photogram-black.svg";
 
@@ -91,26 +91,28 @@ const Login = (props) => {
               value={formData.password}
               onChange={handleChange}
             />
-            <Button
+            <ButtonBase
               variant="contained"
               elevation={0}
               className={classes.loginButton}
               onClick={handleLogin}
               disabled={progress}
+              classes={{ root: classes.rootButton }}
             >
               {!progress ? "Login" : <CircularProgress className={classes.progress} />}
-            </Button>
+            </ButtonBase>
           </form>
-          <Button
+          <ButtonBase
             component={Link}
             to="/register"
             variant="contained"
             elevation={0}
             className={classes.registerButton}
             startIcon={<ArrowBackIosIcon />}
+            classes={{ root: classes.rootButton }}
           >
             Register
-          </Button>
+          </ButtonBase>
         </React.Fragment>
       </main>
     </div>

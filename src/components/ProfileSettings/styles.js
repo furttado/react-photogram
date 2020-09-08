@@ -34,6 +34,7 @@ export const useStyles = makeStyles((theme) => ({
   textField: {},
 
   updateButton: {
+    ...theme.presets.buttonDefault,
     ...theme.presets.blueButton,
     width: "90%",
     justifySelf: "left",
@@ -44,7 +45,20 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   buttonDisabled: {
+    ...theme.presets.buttonDefault,
+    ...theme.presets.grayButton,
     backgroundColor: theme.palette.common.border,
+    width: "90%",
+    justifySelf: "left",
+
+    [theme.breakpoints.up("sm")]: {
+      width: "20%",
+      justifySelf: "center",
+    },
+  },
+
+  buttonRoot: {
+    ...theme.presets.blueButton,
   },
 
   formRow: {

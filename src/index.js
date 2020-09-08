@@ -22,11 +22,7 @@ const jss = create({
   ...jssPreset(),
   insertionPoint: document.getElementById("jss-insertion-point"),
 });
-//jss.options.createGenerateClassName = generateClassName;
 jss.options.createGenerateClassName = createGenerateClassName;
-
-console.log(jss);
-console.log(generateClassName);
 
 ReactDOM.render(
   <Provider store={store}>

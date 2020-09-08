@@ -36,6 +36,10 @@ export default createMuiTheme({
   typography: {
     fontFamily: "Roboto",
     color: primaryFont,
+    h2: {
+      fontWeight: "100",
+      fontSize: "2rem",
+    },
     h3: {
       fontWeight: 300,
     },

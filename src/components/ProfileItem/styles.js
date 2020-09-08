@@ -22,9 +22,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     gridArea: "avatar",
+    border: `4px solid ${theme.palette.common.primaryFont} `,
+  },
+  muiAvatarRoot: {
     width: theme.spacing(10),
     height: theme.spacing(10),
-    border: `4px solid ${theme.palette.common.primaryFont} `,
 
     [theme.breakpoints.up("md")]: {
       width: theme.spacing(20),
@@ -44,12 +46,13 @@ export const useStyles = makeStyles((theme) => ({
       heigth: "1px",
     },
   },
-
-  userNameTypography: {
-    fontWeight: "100",
-    fontSize: "2rem",
+  buttonRoot: {
+    color: undefined,
+    backgroundColor: undefined,
   },
-
+  rootLabel: {
+    color: undefined,
+  },
   button: {
     ...theme.presets.blueButton,
     width: "50%",

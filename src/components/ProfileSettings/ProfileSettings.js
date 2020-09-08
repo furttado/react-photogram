@@ -137,14 +137,15 @@ const ProfileSettings = (props) => {
             <HighlightOff aria-label={"clear"} />
           </IconButton>
         </section>
-        <Button
+        <button
           onClick={handleSubmit}
-          className={classes.updateButton}
+          //className={classes.updateButton}
+          //classes={{ disabled: classes.buttonDisabled, root: classes.buttonRoot }}
           disabled={disabledButton}
-          classes={{ disabled: classes.buttonDisabled, root: classes.buttonRoot }}
+          className={(disabledButton && classes.buttonDisabled) || classes.updateButton}
         >
           Update
-        </Button>
+        </button>
       </form>
     </div>
   );

@@ -91,7 +91,7 @@ export default createMuiTheme({
       background: background,
       borderRadius: 3,
       border: 0,
-      color: primaryFont,
+      color: secondaryFont,
       height: 48,
       padding: "0 30px",
       boxShadow: "none",
@@ -117,6 +117,12 @@ export default createMuiTheme({
         body: {
           background: "#ffff",
         },
+      },
+    },
+    MuiAvatar: {
+      root: {
+        width: undefined,
+        height: undefined,
       },
     },
   },

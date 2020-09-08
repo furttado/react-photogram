@@ -5,9 +5,16 @@ import { Link } from "react-router-dom";
 
 import { useStyles } from "./styles";
 
-import { AppBar, Toolbar, Button, InputBase, Hidden, Avatar } from "@material-ui/core";
-import { Home, ExitToApp, AddAPhoto } from "@material-ui/icons";
-
+import { AppBar, Toolbar, InputBase, Hidden, Avatar, ButtonBase } from "@material-ui/core";
+import {
+  Home,
+  ExitToApp,
+  AddAPhoto,
+  Camera,
+  NotificationImportant,
+  Notifications,
+  Search,
+} from "@material-ui/icons";
 import photoGramIcon from "../../assets/images/photogram-black.svg";
 
 import { fetchMainProfile } from "../../store/ducks/mainProfile/actions";
@@ -34,36 +41,49 @@ const Header = (props) => {
         <Toolbar className={classes.toolbar}>
           <section className={classes.section}>
             <img src={photoGramIcon} className={classes.icon} alt="Photogram icon" />
-
             <Hidden smDown>
               <InputBase placeholder="search profile..." classes={{ input: classes.searchField }} />
             </Hidden>
 
             <nav className={classes.buttonsContainer}>
-              <Button
+              <ButtonBase
                 component={Link}
                 to="/"
-                className={
-                  (activeRoute === "/" && classes.activeButton) || classes.activeButton.default
-                }
+                className={(activeRoute === "/" && classes.activeButton) || classes.inactiveButton}
                 onClick={() => setActiveRoute("/")}
               >
                 <Home />
-              </Button>
+              </ButtonBase>
 
-              <Button
+              <ButtonBase
                 component={Link}
                 to="/new-post"
                 className={
-                  (activeRoute === "/new-post" && classes.activeButton) ||
-                  classes.activeButton.default
+                  (activeRoute === "/new-post" && classes.activeButton) || classes.inactiveButton
                 }
                 onClick={() => setActiveRoute("/new-post")}
               >
                 <AddAPhoto />
-              </Button>
+              </ButtonBase>
 
-              <Button
+              <Hidden mdUp>
+                <ButtonBase
+                  aria-label={"Search"}
+                  onClick={() => {}}
+                  className={(classes.notifications, classes.inactiveButton)}
+                >
+                  <Search />
+                </ButtonBase>
+              </Hidden>
+
+              <ButtonBase
+                onClick={() => {}}
+                className={(classes.notifications, classes.inactiveButton)}
+              >
+                <Notifications />
+              </ButtonBase>
+
+              <ButtonBase
                 component={Link}
                 to={`/profile/${mainProfile.data.nickname}`}
                 onClick={() => setActiveRoute("/profile")}
@@ -75,11 +95,11 @@ const Header = (props) => {
                     (activeRoute === "/profile" && classes.activeAvatar) || classes.inactiveAvatar
                   }
                 />
-              </Button>
+              </ButtonBase>
 
-              <Button onClick={handleLogout}>
+              <ButtonBase onClick={handleLogout} className={classes.inactiveButton}>
                 <ExitToApp />
-              </Button>
+              </ButtonBase>
             </nav>
           </section>
         </Toolbar>

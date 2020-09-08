@@ -2,7 +2,7 @@ import React from "react";
 
 import { useStyles } from "./styles";
 
-import { Typography, Avatar, Button } from "@material-ui/core";
+import { Typography, Avatar, ButtonBase } from "@material-ui/core";
 
 const ProfileItem = (props) => {
   const classes = useStyles();
@@ -36,13 +36,13 @@ const ProfileItem = (props) => {
 
         <section className={classes.userNameItem}>
           <Typography variant="h2">{nickname}</Typography>
-          <button
+          <ButtonBase
             className={handleButtonStyle(buttonStyle)}
             onClick={buttonOnclick}
-            //classes={{ root: classes.buttonRoot, label: classes.rootLabel }}
+            //classes={{ root: classes.buttonRoot }}
           >
             {buttonText}
-          </button>
+          </ButtonBase>
         </section>
 
         <section className={classes.detailsContainer}>

@@ -59,6 +59,7 @@ export default createMuiTheme({
       outline: "none",
       color: box,
       cursor: "pointer",
+      borderRadius: "3px",
     },
 
     blueButton: {

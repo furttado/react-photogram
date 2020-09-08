@@ -20,11 +20,9 @@ export const useStyles = makeStyles((theme) => ({
         `,
     },
   },
+
   avatar: {
     gridArea: "avatar",
-    border: `4px solid ${theme.palette.common.primaryFont} `,
-  },
-  muiAvatarRoot: {
     width: theme.spacing(10),
     height: theme.spacing(10),
 

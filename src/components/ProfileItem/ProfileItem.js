@@ -31,12 +31,7 @@ const ProfileItem = (props) => {
     <React.Fragment>
       <div className={classes.container}>
         <section>
-          <Avatar
-            alt="profile avatar"
-            src={avatar}
-            className={classes.avatar}
-            classes={{ root: classes.muiAvatarRoot }}
-          />
+          <Avatar alt="profile avatar" src={avatar} classes={{ root: classes.avatar }} />
         </section>
 
         <section className={classes.userNameItem}>

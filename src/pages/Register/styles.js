@@ -41,6 +41,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   registerButton: {
+    textTransform: "uppercase",
     background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
     borderRadius: 3,
     border: 0,
@@ -50,9 +51,13 @@ export const useStyles = makeStyles((theme) => ({
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     width: "100%",
   },
+  rootButton: {
+    backgroundColor: undefined,
+    color: undefined,
+  },
 
   loginButton: {
-    //...theme.presets.blueButton,
+    textTransform: "uppercase",
     width: "100%",
     marginTop: "1rem",
     background: theme.palette.common.blueButton,

@@ -139,8 +139,6 @@ const ProfileSettings = (props) => {
         </section>
         <button
           onClick={handleSubmit}
-          //className={classes.updateButton}
-          //classes={{ disabled: classes.buttonDisabled, root: classes.buttonRoot }}
           disabled={disabledButton}
           className={(disabledButton && classes.buttonDisabled) || classes.updateButton}
         >

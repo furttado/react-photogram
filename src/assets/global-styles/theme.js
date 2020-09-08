@@ -58,6 +58,7 @@ export default createMuiTheme({
       textTransform: "uppercase",
       outline: "none",
       color: box,
+      cursor: "pointer",
     },
 
     blueButton: {

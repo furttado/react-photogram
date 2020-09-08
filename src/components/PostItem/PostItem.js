@@ -25,7 +25,8 @@ const PostItem = (props) => {
   return (
     <Card elevation={0} className={classes.card} id={props.id}>
       <CardHeader
-        avatar={<Avatar alt="profile avatar" src={props.avatar} className={classes.avatar} />}
+        className={classes.cardHeader}
+        avatar={<Avatar alt="profile avatar" src={props.avatar} />}
         title={props.nickname}
         subheader={props.place}
         component={props.component}

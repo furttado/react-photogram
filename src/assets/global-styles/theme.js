@@ -36,6 +36,10 @@ export default createMuiTheme({
   typography: {
     fontFamily: "Roboto",
     color: primaryFont,
+    h2: {
+      fontWeight: "100",
+      fontSize: "2rem",
+    },
     h3: {
       fontWeight: 300,
     },
@@ -54,6 +58,7 @@ export default createMuiTheme({
       textTransform: "uppercase",
       outline: "none",
       color: box,
+      cursor: "pointer",
     },
 
     blueButton: {
@@ -87,7 +92,7 @@ export default createMuiTheme({
       background: background,
       borderRadius: 3,
       border: 0,
-      color: primaryFont,
+      color: secondaryFont,
       height: 48,
       padding: "0 30px",
       boxShadow: "none",
@@ -113,6 +118,12 @@ export default createMuiTheme({
         body: {
           background: "#ffff",
         },
+      },
+    },
+    MuiAvatar: {
+      root: {
+        width: undefined,
+        height: undefined,
       },
     },
   },

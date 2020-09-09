@@ -95,6 +95,20 @@ export const fetchEditUserProfile = (data) => async (dispatch) => {
     dispatch(setError(err.response.data));
   }
 };
+export const fetchSearchUser = (keyword) => async (dispatch) => {
+  dispatch(setLoading());
+  try {
+    const response = await api.get(`users/search/${keyword}`);
+    dispatch(setSearchUser(response.data));
+    /*
+    setTimeout(() => {
+      dispatch(resetUserLog());
+    }, 1000);
+    */
+  } catch (err) {
+    dispatch(setError(err.response.data));
+  }
+};
 
 // Action creators
 const setFollow = (responseData) => {
@@ -141,6 +155,12 @@ const setError = (err) => {
 const setNotifications = (responseData) => {
   return {
     type: types.SET_NOTIFICATIONS,
+    payload: responseData,
+  };
+};
+const setSearchUser = (responseData) => {
+  return {
+    type: types.SET_SEARCH_USER,
     payload: responseData,
   };
 };

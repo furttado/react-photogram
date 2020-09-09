@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   data: false,
   notifications: false,
+  searchData: false,
   error: false,
 };
 
@@ -23,6 +24,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, loading: false, data: action.payload, error: false };
     case types.SET_NOTIFICATIONS:
       return { ...state, loading: false, data: false, notifications: action.payload, error: false };
+    case types.SET_SEARCH_USER:
+      return { ...state, loading: false, data: false, searchData: action.payload, error: false };
     case types.RESET_USER_LOG:
       return {
         ...state,

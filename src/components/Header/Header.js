@@ -6,16 +6,9 @@ import { Link } from "react-router-dom";
 import { useStyles } from "./styles";
 
 import { AppBar, Toolbar, InputBase, Hidden, Avatar, ButtonBase } from "@material-ui/core";
-import {
-  Home,
-  ExitToApp,
-  AddAPhoto,
-  Camera,
-  NotificationImportant,
-  Notifications,
-  Search,
-} from "@material-ui/icons";
+import { Home, ExitToApp, AddAPhoto, Notifications, Search } from "@material-ui/icons";
 import photoGramIcon from "../../assets/images/photogram-black.svg";
+import SearchItem from "../../pages/Search";
 
 import { fetchMainProfile } from "../../store/ducks/mainProfile/actions";
 import { setActiveRoute } from "../../store/ducks/styles/activeRoute";
@@ -66,8 +59,12 @@ const Header = (props) => {
               <Hidden mdUp>
                 <ButtonBase
                   aria-label={"Search"}
-                  onClick={() => {}}
-                  className={(classes.notifications, classes.inactiveButton)}
+                  component={Link}
+                  to="/search"
+                  onClick={() => setActiveRoute("/search")}
+                  className={
+                    (activeRoute === "/search" && classes.activeButton) || classes.inactiveButton
+                  }
                 >
                   <Search />
                 </ButtonBase>

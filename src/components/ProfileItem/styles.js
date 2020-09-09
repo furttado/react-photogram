@@ -53,12 +53,14 @@ export const useStyles = makeStyles((theme) => ({
     ...theme.presets.buttonDefault,
     width: "50%",
     height: "20px",
+    padding: 0,
   },
   unfollowButton: {
     ...theme.presets.redButton,
     ...theme.presets.buttonDefault,
     width: "50%",
     height: "20px",
+    padding: 0,
   },
 
   detailsContainer: {

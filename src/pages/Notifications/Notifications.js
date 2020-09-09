@@ -28,7 +28,6 @@ import {
 import { useStyles } from "./styles";
 
 const Notifications = (props) => {
-  const [notification, setNotification] = useState([]);
   const classes = useStyles();
   const {
     setActiveRoute,
@@ -138,29 +137,3 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
-
-/*
-
-{notification.length < 0 &&
-  notification.map((nickname) => {
-    return (
-      nickname !== user.nickname ||
-      (nickname.length === 0 && (
-      */
-
-/*
-
-      return (
-    <React.Fragment>
-      {userStatus.loading ? (
-        <CircularProgress />
-      ) : (
-        (followNotifications &&
-          followNotifications.map((follower) => (
-            <NotificationItem user={follower} key={follower.nickname} />
-          ))) || <Typography>Nothing here</Typography>
-      )}
-    </React.Fragment>
-  );
-};
-*/

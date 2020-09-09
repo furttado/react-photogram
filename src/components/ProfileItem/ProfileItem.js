@@ -36,11 +36,7 @@ const ProfileItem = (props) => {
 
         <section className={classes.userNameItem}>
           <Typography variant="h2">{nickname}</Typography>
-          <button
-            className={handleButtonStyle(buttonStyle)}
-            onClick={buttonOnclick}
-            //classes={{ root: classes.buttonRoot }}
-          >
+          <button className={handleButtonStyle(buttonStyle)} onClick={buttonOnclick}>
             {buttonText}
           </button>
         </section>

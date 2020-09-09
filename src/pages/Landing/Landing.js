@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { useStyles } from "./styles";
 import { CircularProgress, Button } from "@material-ui/core";
-import { ExpandMore, ExpandLess } from "@material-ui/icons";
+import { ExpandMore, ExpandLess, LastPage } from "@material-ui/icons";
 
 import PostItem from "../../components/PostItem";
 import { setActiveRoute } from "../../store/ducks/styles/activeRoute";
@@ -19,10 +19,20 @@ const Landing = (props) => {
     if (window.location.pathname !== activeRoute) {
       setActiveRoute(window.location.pathname);
     }
-    fetchAllPosts(page);
+    if (allPosts.data.length === 0) {
+      fetchAllPosts(page);
+    }
   }, [page, fetchAllPosts]);
 
   const getNewPages = () => {
+    let lastPageLength;
+    for (lastPageLength of allPosts.data) {
+      lastPageLength = lastPageLength.length;
+    }
+    if (lastPageLength < 5) {
+      return;
+    }
+
     let activePage = page;
     setPage((activePage += 1));
 

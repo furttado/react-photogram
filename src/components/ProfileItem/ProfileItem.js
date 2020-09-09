@@ -39,7 +39,7 @@ const ProfileItem = (props) => {
           <ButtonBase
             className={handleButtonStyle(buttonStyle)}
             onClick={buttonOnclick}
-            //classes={{ root: classes.buttonRoot }}
+            classes={{ root: classes.buttonRoot }}
           >
             {buttonText}
           </ButtonBase>

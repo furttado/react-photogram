@@ -28,6 +28,7 @@ import {
 import { useStyles } from "./styles";
 
 const Notifications = (props) => {
+  const [notification, setNotification] = useState([]);
   const classes = useStyles();
   const {
     setActiveRoute,
@@ -60,7 +61,7 @@ const Notifications = (props) => {
           <ListItem alignItems="flex-start" className={classes.listItem}>
             <ListItemAvatar>
               <Avatar
-                alt="Remy Sharp"
+                alt={user.name}
                 src={user.picture}
                 style={{ width: "40px", height: "40px" }}
                 component={Link}
@@ -109,10 +110,14 @@ const Notifications = (props) => {
 
   return (
     <React.Fragment>
-      {(followNotifications &&
-        followNotifications.map((follower) => (
-          <NotificationItem user={follower} key={generateKey()} />
-        ))) || <Typography>Nothing here</Typography>}
+      {userStatus.loading ? (
+        <CircularProgress className={classes.progress} />
+      ) : (
+        (followNotifications.length > 0 &&
+          followNotifications.map((follower) => (
+            <NotificationItem user={follower} key={follower.nickname} />
+          ))) || <Warning text={"You have no notifications."} image={"info"} />
+      )}
     </React.Fragment>
   );
 };
@@ -133,3 +138,29 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
+
+/*
+
+{notification.length < 0 &&
+  notification.map((nickname) => {
+    return (
+      nickname !== user.nickname ||
+      (nickname.length === 0 && (
+      */
+
+/*
+
+      return (
+    <React.Fragment>
+      {userStatus.loading ? (
+        <CircularProgress />
+      ) : (
+        (followNotifications &&
+          followNotifications.map((follower) => (
+            <NotificationItem user={follower} key={follower.nickname} />
+          ))) || <Typography>Nothing here</Typography>
+      )}
+    </React.Fragment>
+  );
+};
+*/

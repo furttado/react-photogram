@@ -1,7 +1,7 @@
 import React from "react";
 import { useStyles } from "./styles";
 import { Typography } from "@material-ui/core";
-import { SentimentVeryDissatisfied, Lock, Panorama, AccessAlarm } from "@material-ui/icons";
+import { SentimentVeryDissatisfied, Lock, Panorama, AccessAlarm, Info } from "@material-ui/icons";
 
 const Warning = (props) => {
   const classes = useStyles();
@@ -20,6 +20,9 @@ const Warning = (props) => {
     }
     if (value === "wait") {
       return <AccessAlarm className={classes.icon} />;
+    }
+    if (value === "info") {
+      return <Info className={classes.icon} />;
     }
   };
 

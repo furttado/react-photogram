@@ -58,7 +58,7 @@ const Landing = (props) => {
           </Button>
         )}
 
-        {allPosts.data.length < page ? ( // allPosts.data.length < page ? // allPosts.loading ?
+        {allPosts.data.length < page ? (
           <CircularProgress className={classes.progress} />
         ) : (
           allPosts.data[page - 1].map((post) => (

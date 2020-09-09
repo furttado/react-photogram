@@ -29,4 +29,10 @@ export const useStyles = makeStyles((theme) => ({
       color: theme.palette.common.blackIcons,
     },
   },
+  progress: {
+    width: "90%",
+    marginTop: "2rem",
+    justifySelf: "center",
+    color: theme.palette.common.blueButton,
+  },
 }));

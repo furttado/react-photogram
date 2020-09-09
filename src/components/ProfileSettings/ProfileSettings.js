@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useStyles } from "./styles";
 import Modal from "@material-ui/core/Modal";
 
-import { Typography, Button, IconButton, TextField } from "@material-ui/core";
+import { Typography, Button, IconButton, TextField, ButtonBase } from "@material-ui/core";
 import { HighlightOff, Close } from "@material-ui/icons";
 
 import Dialog from "../Dialog";
@@ -65,9 +65,14 @@ const ProfileSettings = (props) => {
         <Typography variant={"h4"} id="simple-modal-title">
           Profile settings
         </Typography>
-        <IconButton variant="outlined" color="primary" onClick={() => setOpenDialog(true)}>
+        <ButtonBase
+          variant="outlined"
+          color="primary"
+          onClick={() => setOpenDialog(true)}
+          className={classes.clearButton}
+        >
           <Close />
-        </IconButton>
+        </ButtonBase>
         {openDialog && (
           <Dialog
             cancel={"Cancel"}
@@ -96,10 +101,10 @@ const ProfileSettings = (props) => {
             value={formData.fullname}
             onChange={handleChange}
           />
-          <IconButton onClick={() => handleClear("fullname")}>
+          <ButtonBase onClick={() => handleClear("fullname")} className={classes.clearButton}>
             {" "}
             <HighlightOff aria-label={"clear"} />
-          </IconButton>
+          </ButtonBase>
         </section>
         <section className={classes.formRow}>
           <TextField
@@ -112,10 +117,10 @@ const ProfileSettings = (props) => {
             value={formData.avatar}
             onChange={handleChange}
           />
-          <IconButton onClick={() => handleClear("avatar")}>
+          <ButtonBase onClick={() => handleClear("avatar")} className={classes.clearButton}>
             {" "}
             <HighlightOff aria-label={"clear"} />
-          </IconButton>
+          </ButtonBase>
         </section>
         <section className={classes.formRow}>
           <TextField
@@ -132,10 +137,10 @@ const ProfileSettings = (props) => {
             value={formData.bio}
             onChange={handleChange}
           />
-          <IconButton onClick={() => handleClear("bio")}>
+          <ButtonBase onClick={() => handleClear("bio")} className={classes.clearButton}>
             {" "}
             <HighlightOff aria-label={"clear"} />
-          </IconButton>
+          </ButtonBase>
         </section>
         <button
           onClick={handleSubmit}

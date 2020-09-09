@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { useStyles } from "./styles";
 import { Link } from "react-router-dom";
 import {
   Typography,
@@ -19,6 +18,7 @@ import { fetchSearchUser } from "../../store/ducks/user/actions";
 import { setActiveRoute } from "../../store/ducks/styles/activeRoute";
 
 import Warning from "../../components/Warning";
+import { useStyles } from "./styles";
 
 const SearchItem = (props) => {
   const classes = useStyles();

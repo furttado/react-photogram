@@ -28,6 +28,7 @@ export const useStyles = makeStyles((theme) => ({
   searchInput: {
     alignSelf: "center",
   },
+
   userListContainer: {
     width: "100%",
     backgroundColor: theme.palette.common.box,
@@ -45,16 +46,8 @@ export const useStyles = makeStyles((theme) => ({
   subtitle: {
     marginBottom: "1rem",
   },
-
   buttonRoot: {
     ...theme.presets.blueButton,
-  },
-  clearButton: {
-    transition: "0.5s",
-    color: theme.palette.common.blackIcons,
-    "&:hover": {
-      color: theme.palette.common.redButton,
-    },
   },
   searchButton: {
     ...theme.presets.buttonDefault,
@@ -64,7 +57,6 @@ export const useStyles = makeStyles((theme) => ({
       color: theme.palette.common.blueButton,
     },
   },
-
   listItem: {
     display: "grid",
     gridTemplateColumns: "1fr 4fr 1fr",

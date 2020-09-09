@@ -56,7 +56,9 @@ const Header = (props) => {
                 <AddAPhoto />
               </ButtonBase>
 
-              <Hidden mdUp>
+              <Hidden
+              //mdUp
+              >
                 <ButtonBase
                   aria-label={"Search"}
                   component={Link}

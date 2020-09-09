@@ -30,11 +30,8 @@ const Header = (props) => {
   }
 
   useEffect(() => {
-    if (mainProfile.data.length === 0) {
-      fetchMainProfile();
-    }
-  }, [mainProfile.data]);
-
+    fetchMainProfile();
+  }, [fetchMainProfile]);
   return (
     <React.Fragment>
       <AppBar className={classes.appBar} elevation={0}>
@@ -77,8 +74,12 @@ const Header = (props) => {
               </Hidden>
 
               <ButtonBase
-                onClick={() => {}}
-                className={(classes.notifications, classes.inactiveButton)}
+                component={Link}
+                to="/notifications"
+                className={
+                  (activeRoute === "/notifications" && classes.activeButton) ||
+                  classes.inactiveButton
+                }
               >
                 <Notifications />
               </ButtonBase>

@@ -19,10 +19,8 @@ const Landing = (props) => {
     if (window.location.pathname !== activeRoute) {
       setActiveRoute(window.location.pathname);
     }
-    if (allPosts.data.length === 0) {
-      fetchAllPosts(page);
-    }
-  }, [page]);
+    fetchAllPosts(page);
+  }, [page, fetchAllPosts]);
 
   const getNewPages = () => {
     let activePage = page;

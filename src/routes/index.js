@@ -10,6 +10,7 @@ import Landing from "../pages/Landing";
 import NewPost from "../pages/NewPost";
 import Login from "../pages/Login";
 import Header from "../components/Header";
+import Notifications from "../pages/Notifications";
 
 import { createBrowserHistory } from "history";
 export const customHistory = createBrowserHistory();
@@ -25,6 +26,7 @@ function Routes(props) {
           <PrivateRouter exact path="/" component={Landing} />
           <PrivateRouter path="/profile/:nickname" component={Profile} />
           <PrivateRouter path="/new-post" component={NewPost} />
+          <PrivateRouter path="/notifications" component={Notifications} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </Switch>

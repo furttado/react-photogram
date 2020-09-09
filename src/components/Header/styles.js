@@ -58,17 +58,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   activeButton: {
     color: theme.palette.common.redButton,
-    //marginLeft: "0.8rem",
     marginRight: "1rem",
   },
   inactiveButton: {
-    //marginLeft: "0.8rem",
     marginRight: "1rem",
     color: theme.palette.common.blackIcons,
   },
 
   inactiveAvatar: {
-    //marginLeft: "0.8rem",
     marginRight: "1rem",
 
     width: theme.spacing(2.9),
@@ -77,7 +74,6 @@ export const useStyles = makeStyles((theme) => ({
     border: 0,
   },
   activeAvatar: {
-    //marginLeft: "0.8rem",
     marginRight: "1rem",
 
     width: theme.spacing(2.9),

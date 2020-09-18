@@ -9,6 +9,7 @@ const blueButton = "#0396f6";
 const redButton = "#ed4956";
 const pinkButton = "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)";
 const pinkButtonShadow = "0 3px 5px 2px rgba(255, 105, 135, .3)";
+const blackIcons = "#404040";
 
 export default createMuiTheme({
   palette: {
@@ -22,6 +23,7 @@ export default createMuiTheme({
       redButton: redButton,
       pinkButton: pinkButton,
       pinkButtonShadow: pinkButtonShadow,
+      blackIcons: blackIcons,
     },
     primary: {
       main: primaryFont,
@@ -59,6 +61,8 @@ export default createMuiTheme({
       outline: "none",
       color: box,
       cursor: "pointer",
+      borderRadius: "3px",
+      transition: "0.5s",
     },
 
     blueButton: {

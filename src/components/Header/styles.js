@@ -11,7 +11,8 @@ export const useStyles = makeStyles((theme) => ({
   toolbar: {
     background: theme.palette.common.box,
     height: "10px",
-    padding: 0,
+    padding: "0 1rem 0 1rem",
+
     display: "flex",
     justifyContent: "center",
   },
@@ -29,18 +30,18 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   icon: {
-    width: "100px",
-    height: "auto",
+    width: "7.5rem",
     paddingLeft: "10%",
     marginRight: "5%",
     justifySelf: "left",
+    color: theme.palette.common.blackIcons,
 
     [theme.breakpoints.up("sm")]: {
-      height: "80%",
-      width: "auto",
+      width: "8.5rem",
     },
     [theme.breakpoints.up("md")]: {
       paddingLeft: "5%",
+      width: "7rem",
     },
   },
   searchField: {
@@ -52,26 +53,31 @@ export const useStyles = makeStyles((theme) => ({
   },
   buttonsContainer: {
     display: "grid",
-    gridTemplateColumns: "auto auto auto auto",
-
-    "& a, span": {},
-    "& svg": {},
+    gridTemplateColumns: "auto auto auto auto auto auto",
+    marginLeft: "1rem",
   },
   activeButton: {
     color: theme.palette.common.redButton,
-    default: {
-      color: theme.palette.common.primaryFont,
-    },
+    marginRight: "1rem",
   },
+  inactiveButton: {
+    marginRight: "1rem",
+    color: theme.palette.common.blackIcons,
+  },
+
   inactiveAvatar: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
+    marginRight: "1rem",
+
+    width: theme.spacing(2.9),
+    height: theme.spacing(2.9),
     alignSelf: "center",
     border: 0,
   },
   activeAvatar: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
+    marginRight: "1rem",
+
+    width: theme.spacing(2.9),
+    height: theme.spacing(2.9),
     alignSelf: "center",
     border: `2px solid ${theme.palette.common.redButton}`,
   },

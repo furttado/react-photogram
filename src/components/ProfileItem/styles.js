@@ -48,22 +48,19 @@ export const useStyles = makeStyles((theme) => ({
     color: undefined,
     backgroundColor: undefined,
   },
-  rootLabel: {
-    color: undefined,
-  },
   button: {
     ...theme.presets.blueButton,
+    ...theme.presets.buttonDefault,
     width: "50%",
     height: "20px",
-    textTransform: "uppercase",
-    outline: "none",
+    padding: 0,
   },
   unfollowButton: {
     ...theme.presets.redButton,
+    ...theme.presets.buttonDefault,
     width: "50%",
     height: "20px",
-    textTransform: "uppercase",
-    outline: "none",
+    padding: 0,
   },
 
   detailsContainer: {

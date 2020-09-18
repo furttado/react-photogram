@@ -60,6 +60,13 @@ export const useStyles = makeStyles((theme) => ({
   buttonRoot: {
     ...theme.presets.blueButton,
   },
+  clearButton: {
+    transition: "0.5s",
+    color: theme.palette.common.blackIcons,
+    "&:hover": {
+      color: theme.palette.common.redButton,
+    },
+  },
 
   formRow: {
     display: "grid",
